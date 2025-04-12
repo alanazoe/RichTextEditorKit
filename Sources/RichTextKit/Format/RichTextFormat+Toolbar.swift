@@ -66,7 +66,7 @@ public extension RichTextFormat {
             .labelsHidden()
             .padding(.vertical, style.padding)
             .environment(\.sizeCategory, .medium)
-            .background(background)
+            //.background(.white)
             #if macOS
             .frame(minWidth: 650)
             #endif

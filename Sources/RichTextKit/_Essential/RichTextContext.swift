@@ -53,10 +53,12 @@ public class RichTextContext: ObservableObject {
     @Published public var isEditingText = false
 
     /// The current font name.
-    @Published public var fontName = RichTextFont.PickerFont.all.first?.fontName ?? ""
+    @Published public var fontName = RichTextFont.PickerFont.all.first?.fontName ?? "Georgia"
 
     /// The current font size.
-    @Published public var fontSize = CGFloat.standardRichTextFontSize
+    @Published public var fontSize = CGFloat(16.5)
+    
+    //CGFloat.standardRichTextFontSize
 
 
     // MARK: - Observable Properties
@@ -77,8 +79,12 @@ public class RichTextContext: ObservableObject {
     @Published public internal(set) var highlightingStyle = RichTextHighlightingStyle.standard
 
     /// The current paragraph style.
-    @Published public internal(set) var paragraphStyle = NSMutableParagraphStyle.defaultMutable
-
+    //@Published public internal(set) var paragraphStyle = NSMutableParagraphStyle.defaultMutable
+    @Published public internal(set) var paragraphStyle: NSMutableParagraphStyle = {
+        let style = NSMutableParagraphStyle.defaultMutable
+        style.lineSpacing = 7.5
+        return style
+    }()
     /// The current rich text styles.
     @Published public internal(set) var styles = [RichTextStyle: Bool]()
     
