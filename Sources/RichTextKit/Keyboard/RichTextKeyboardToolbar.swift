@@ -251,15 +251,22 @@ private extension RichTextKeyboardToolbar {
     struct Preview: View {
 
         @State
-        private var text = NSAttributedString(string: "")
+        private var text = {
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: NSColor.white
+            ]
+            return NSAttributedString(string: "", attributes: attributes)
+        }()
 
         @StateObject
         private var context = RichTextContext()
 
         var body: some View {
             VStack(spacing: 0) {
-                RichTextEditor(text: $text, context: context)
-                    .background(Color.white)
+                RichTextEditor(text: $text, context: context, textColor: TextColor(color: .white))
+                    .foregroundColor(.white)
+                    .background(Color.clear)
+                    .lineSpacing(7.5)
                     .cornerRadius(10)
                     .padding()
                     .background(Color.gray.ignoresSafeArea())

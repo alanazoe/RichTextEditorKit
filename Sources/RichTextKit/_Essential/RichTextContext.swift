@@ -58,6 +58,9 @@ public class RichTextContext: ObservableObject {
     /// The current font size.
     @Published public var fontSize = CGFloat(16.5)
     
+    /// The current font color.
+
+    @Published public var fontColor = NSColor.white
     //CGFloat.standardRichTextFontSize
 
 

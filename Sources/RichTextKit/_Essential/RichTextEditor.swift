@@ -52,6 +52,13 @@ import SwiftUI
  For more information, see ``RichTextKeyboardToolbarConfig``
  and ``RichTextKeyboardToolbarStyle``.
  */
+
+public class TextColor: ObservableObject {
+    @Published var color: Color
+    public init(color: Color = .white) {
+        self.color = color
+    }
+}
 public struct RichTextEditor: ViewRepresentable {
 
     /// Create a rich text editor with a rich text value and
@@ -66,10 +73,12 @@ public struct RichTextEditor: ViewRepresentable {
         text: Binding<NSAttributedString>,
         context: RichTextContext,
         format: RichTextDataFormat = .archivedData,
+        textColor: TextColor = TextColor(),
         viewConfiguration: @escaping ViewConfiguration = { _ in }
     ) {
         self.text = text
         self._context = ObservedObject(wrappedValue: context)
+        self.textColor = textColor
         self.format = format
         self.viewConfiguration = viewConfiguration
     }
@@ -78,7 +87,7 @@ public struct RichTextEditor: ViewRepresentable {
 
     @ObservedObject
     private var context: RichTextContext
-
+    @ObservedObject var textColor: TextColor
     private var text: Binding<NSAttributedString>
     private var format: RichTextDataFormat
     private var viewConfiguration: ViewConfiguration
@@ -97,8 +106,13 @@ public struct RichTextEditor: ViewRepresentable {
     public let scrollView = RichTextView.scrollableTextView()
 
     public var textView: RichTextView {
-        scrollView.hasVerticalScroller = config.isScrollBarsVisible
-        return scrollView.documentView as? RichTextView ?? RichTextView()
+        /*scrollView.hasVerticalScroller = config.isScrollBarsVisible
+        var view = scrollView.documentView as? RichTextView ?? RichTextView()
+        view.textColor = .init(textColor.color)
+        return view*/
+        let docView = scrollView.documentView as? RichTextView ?? RichTextView()
+           docView.textColor = NSColor(textColor.color)
+        return docView
     }
     #endif
 
@@ -126,7 +140,8 @@ public struct RichTextEditor: ViewRepresentable {
     public func makeNSView(context: Context) -> some NSView {
         textView.setup(with: text.wrappedValue, format: format)
         textView.configuration = config
-        textView.theme = style
+        textView.theme = RichTextView.Theme(fontColor: NSColor(textColor.color))
+        textView.textColor = NSColor(textColor.color)
         viewConfiguration(textView)
         return scrollView
     }

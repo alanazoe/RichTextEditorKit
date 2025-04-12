@@ -28,15 +28,18 @@ open class RichTextCoordinator: NSObject {
     ///   - text: The rich text to edit.
     ///   - textView: The rich text view to keep in sync.
     ///   - richTextContext: The context to keep in sync.
+    ///   - defaultFontColor: The default font color to use if none is set in the text view.
     public init(
         text: Binding<NSAttributedString>,
         textView: RichTextView,
-        richTextContext: RichTextContext
+        richTextContext: RichTextContext,
+        defaultFontColor: ColorRepresentable? = NSColor.white
     ) {
         textView.attributedString = text.wrappedValue
         self.text = text
         self.textView = textView
         self.context = richTextContext
+        self.defaultFontColor = defaultFontColor
         super.init()
         self.textView.delegate = self
         subscribeToUserActions()
@@ -58,6 +61,9 @@ open class RichTextCoordinator: NSObject {
 
     /// This flag is used to avoid delaying context sync.
     var shouldDelaySyncContextWithTextView = true
+
+    /// The default font color to use if none is set in the text view.
+    public let defaultFontColor: ColorRepresentable?
 
     // MARK: - Internal Properties
 
@@ -178,12 +184,18 @@ extension RichTextCoordinator {
         sync(&context.canUndoLatestChange, with: textView.undoManager?.canUndo ?? false)
         sync(&context.fontName, with: font.fontName)
         sync(&context.fontSize, with: font.pointSize)
+        sync(&context.fontColor, with: defaultFontColor ?? NSColor.white)
+
         sync(&context.isEditingText, with: textView.isFirstResponder)
-        sync(&context.paragraphStyle, with: textView.richTextParagraphStyle ?? .defaultMutable)
+        sync(&context.paragraphStyle, with: textView.richTextParagraphStyle ?? {
+            let style = NSMutableParagraphStyle.defaultMutable
+            style.lineSpacing = 7.5
+            return style
+        }())
 
         RichTextColor.allCases.forEach {
             if let color = textView.richTextColor($0) {
-                context.setColor($0, to: color)
+                context.setColor($0, to: .white)
             }
         }
 

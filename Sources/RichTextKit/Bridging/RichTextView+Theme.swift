@@ -20,11 +20,11 @@ public extension RichTextView {
         ///   - fontColor: default `.textColor`.
         ///   - backgroundColor: Color of whole textView default `.clear`.
         public init(
-            font: FontRepresentable = .systemFont(ofSize: 16),
-            fontColor: ColorRepresentable = .textColor,
+            font: FontRepresentable = NSFont(name: "Georgia", size: 16.5) ?? NSFont.systemFont(ofSize: 16.5),
+            fontColor: ColorRepresentable = NSColor.white,
             backgroundColor: ColorRepresentable = .clear
         ) {
-            self.font = font
+            self.font =  NSFont(name: "Georgia", size: 16.5) ?? NSFont.systemFont(ofSize: 16.5)
             self.fontColor = fontColor
             self.backgroundColor = backgroundColor
         }

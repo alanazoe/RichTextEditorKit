@@ -24,7 +24,7 @@ public extension FontRepresentable {
 
     /// The standard font to use for rich text.
     static var standardRichTextFont: FontRepresentable {
-        .systemFont(ofSize: .standardRichTextFontSize)
+        NSFont(name: "Georgia", size: 16.5) ?? NSFont.systemFont(ofSize: 16.5)
     }
 
     /// Create a new font by toggling a certain style.
