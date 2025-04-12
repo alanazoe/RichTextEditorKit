@@ -15,7 +15,7 @@ extension NSAttributedString {
     func withBlackText() -> NSAttributedString {
         let mutable = NSMutableAttributedString(attributedString: self)
         let range = mutable.safeRange(for: NSRange(location: 0, length: mutable.length))
-        mutable.setRichTextAttribute(.foregroundColor, to: ColorRepresentable.black, at: range)
+        mutable.setRichTextAttribute(.foregroundColor, to: ColorRepresentable.white, at: range)
         return mutable
     }
 }

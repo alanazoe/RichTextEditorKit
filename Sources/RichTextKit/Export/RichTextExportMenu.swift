@@ -35,14 +35,15 @@ public struct RichTextExportMenu: View {
         menu
     }
 }
-
-#Preview {
-
-    VStack {
-        RichTextExportMenu(
-            formatAction: { _ in },
-            pdfAction: {}
-        )
-    }
-}
+//
+//#Preview {
+//
+//    VStack {
+//        RichTextExportMenu(
+//            formatAction: { _ in },
+//            pdfAction: {}
+//        )
+//    }
+//}
+//
 #endif

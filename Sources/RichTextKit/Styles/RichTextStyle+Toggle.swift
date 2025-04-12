@@ -86,51 +86,51 @@ private extension RichTextStyle.Toggle {
         value.wrappedValue
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @State
-        private var isBoldOn = false
-
-        @State
-        private var isItalicOn = true
-
-        @State
-        private var isStrikethroughOn = true
-
-        @State
-        private var isUnderlinedOn = true
-
-        @StateObject
-        private var context = RichTextContext()
-
-        var body: some View {
-            HStack {
-                toggle(for: .bold, $isBoldOn)
-                toggle(for: .italic, $isItalicOn)
-                toggle(for: .strikethrough, $isStrikethroughOn)
-                toggle(for: .underlined, $isUnderlinedOn)
-                Divider()
-                RichTextStyle.Toggle(
-                    style: .bold,
-                    context: context,
-                    fillVertically: true
-                )
-            }
-            .fixedSize(horizontal: false, vertical: true)
-            .padding()
-        }
-
-        func toggle(for style: RichTextStyle, _ binding: Binding<Bool>) -> some View {
-            RichTextStyle.Toggle(
-                style: style,
-                value: binding,
-                fillVertically: true
-            )
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @State
+//        private var isBoldOn = false
+//
+//        @State
+//        private var isItalicOn = true
+//
+//        @State
+//        private var isStrikethroughOn = true
+//
+//        @State
+//        private var isUnderlinedOn = true
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        var body: some View {
+//            HStack {
+//                toggle(for: .bold, $isBoldOn)
+//                toggle(for: .italic, $isItalicOn)
+//                toggle(for: .strikethrough, $isStrikethroughOn)
+//                toggle(for: .underlined, $isUnderlinedOn)
+//                Divider()
+//                RichTextStyle.Toggle(
+//                    style: .bold,
+//                    context: context,
+//                    fillVertically: true
+//                )
+//            }
+//            .fixedSize(horizontal: false, vertical: true)
+//            .padding()
+//        }
+//
+//        func toggle(for style: RichTextStyle, _ binding: Binding<Bool>) -> some View {
+//            RichTextStyle.Toggle(
+//                style: style,
+//                value: binding,
+//                fillVertically: true
+//            )
+//        }
+//    }
+//
+//    return Preview()
+//}

@@ -140,45 +140,45 @@ public extension EnvironmentValues {
         set { self [RichTextFormat.Sheet.Style.Key.self] = newValue }
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        @State
-        private var isSheetPresented = false
-
-        var body: some View {
-            VStack(spacing: 0) {
-                Color.red
-                Button("Toggle sheet") {
-                    isSheetPresented.toggle()
-                }
-            }
-            .sheet(isPresented: $isSheetPresented) {
-                RichTextFormat.Sheet(
-                    context: context
-                )
-                .richTextFormatSheetConfig(.init(
-                    alignments: .defaultPickerValues,
-                    colorPickers: [.foreground, .background],
-                    colorPickersDisclosed: [.stroke],
-                    fontPicker: true,
-                    fontSizePicker: false,
-                    indentButtons: true,
-                    styles: .all
-                ))
-            }
-            .richTextFormatToolbarStyle(.init(
-                padding: 10,
-                spacing: 10
-            ))
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        @State
+//        private var isSheetPresented = false
+//
+//        var body: some View {
+//            VStack(spacing: 0) {
+//                Color.red
+//                Button("Toggle sheet") {
+//                    isSheetPresented.toggle()
+//                }
+//            }
+//            .sheet(isPresented: $isSheetPresented) {
+//                RichTextFormat.Sheet(
+//                    context: context
+//                )
+//                .richTextFormatSheetConfig(.init(
+//                    alignments: .defaultPickerValues,
+//                    colorPickers: [.foreground, .background],
+//                    colorPickersDisclosed: [.stroke],
+//                    fontPicker: true,
+//                    fontSizePicker: false,
+//                    indentButtons: true,
+//                    styles: .all
+//                ))
+//            }
+//            .richTextFormatToolbarStyle(.init(
+//                padding: 10,
+//                spacing: 10
+//            ))
+//        }
+//    }
+//
+//    return Preview()
+//}
 #endif

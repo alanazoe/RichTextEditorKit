@@ -73,26 +73,26 @@ public extension RichTextFont {
         }
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @State private var font = ""
-
-        var body: some View {
-            NavigationView {
-                #if macOS
-                Color.clear
-                #endif
-                RichTextFont.ListPicker(
-                    selection: $font
-                )
-                .navigationTitle("Pick a font")
-            }
-            .richTextFontPickerConfig(.init(moveSelectionTopmost: false))
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @State private var font = ""
+//
+//        var body: some View {
+//            NavigationView {
+//                #if macOS
+//                Color.clear
+//                #endif
+//                RichTextFont.ListPicker(
+//                    selection: $font
+//                )
+//                .navigationTitle("Pick a font")
+//            }
+//            .richTextFontPickerConfig(.init(moveSelectionTopmost: false))
+//        }
+//    }
+//
+//    return Preview()
+//}

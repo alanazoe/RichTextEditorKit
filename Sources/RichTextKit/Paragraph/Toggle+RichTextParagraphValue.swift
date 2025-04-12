@@ -40,42 +40,42 @@ public extension Toggle {
         )
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-        
-        let keypath: KeyPath<NSParagraphStyle, Bool> = \.allowsDefaultTighteningForTruncation
-        let writableKeypath: WritableKeyPath<NSMutableParagraphStyle, Bool> = \.allowsDefaultTighteningForTruncation
-
-        @StateObject var context = RichTextContext()
-        
-        var value: Bool {
-            context.paragraphStyleValue(for: keypath)
-        }
-
-        var body: some View {
-            VStack {
-                Text("\(value)")
-                Toggle(
-                    forValue: writableKeypath,
-                    in: context
-                ) {
-                    Text("Context")
-                }
-                Toggle(
-                    forValue: writableKeypath,
-                    in: $context.paragraphStyle
-                ) {
-                    Text("Paragraph")
-                }
-                .labelStyle(.iconOnly)
-                #if !os(watchOS)
-                .pickerStyle(.segmented)
-                #endif
-            }
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//        
+//        let keypath: KeyPath<NSParagraphStyle, Bool> = \.allowsDefaultTighteningForTruncation
+//        let writableKeypath: WritableKeyPath<NSMutableParagraphStyle, Bool> = \.allowsDefaultTighteningForTruncation
+//
+//        @StateObject var context = RichTextContext()
+//        
+//        var value: Bool {
+//            context.paragraphStyleValue(for: keypath)
+//        }
+//
+//        var body: some View {
+//            VStack {
+//                Text("\(value)")
+//                Toggle(
+//                    forValue: writableKeypath,
+//                    in: context
+//                ) {
+//                    Text("Context")
+//                }
+//                Toggle(
+//                    forValue: writableKeypath,
+//                    in: $context.paragraphStyle
+//                ) {
+//                    Text("Paragraph")
+//                }
+//                .labelStyle(.iconOnly)
+//                #if !os(watchOS)
+//                .pickerStyle(.segmented)
+//                #endif
+//            }
+//        }
+//    }
+//
+//    return Preview()
+//}

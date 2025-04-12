@@ -52,27 +52,27 @@ private extension Menu {
         }
     }
 }
-
-#Preview {
-
-    @ViewBuilder
-    func buttons() -> some View {
-        Button("1") {}
-        Button("2") {}
-        Button("3") {}
-    }
-
-    return RichTextKeyboardToolbarMenu {
-        Section("Title") {
-            buttons()
-        }
-        Section {
-            ControlGroup {
-                buttons()
-            }
-        }
-    } label: {
-        Label("Menu", systemImage: "ellipsis.circle")
-    }
-}
+//
+//#Preview {
+//
+//    @ViewBuilder
+//    func buttons() -> some View {
+//        Button("1") {}
+//        Button("2") {}
+//        Button("3") {}
+//    }
+//
+//    return RichTextKeyboardToolbarMenu {
+//        Section("Title") {
+//            buttons()
+//        }
+//        Section {
+//            ControlGroup {
+//                buttons()
+//            }
+//        }
+//    } label: {
+//        Label("Menu", systemImage: "ellipsis.circle")
+//    }
+//}
 #endif

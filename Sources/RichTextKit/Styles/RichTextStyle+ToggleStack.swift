@@ -58,18 +58,18 @@ public extension RichTextStyle {
     }
 }
 
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        var body: some View {
-            RichTextStyle.ToggleStack(context: context)
-                .padding()
-        }
-    }
-
-    return Preview()
-}
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        var body: some View {
+//            RichTextStyle.ToggleStack(context: context)
+//                .padding()
+//        }
+//    }
+//
+//    return Preview()
+//}

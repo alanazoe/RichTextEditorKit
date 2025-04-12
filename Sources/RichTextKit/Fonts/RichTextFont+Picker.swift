@@ -101,72 +101,72 @@ private extension RichTextFont.PickerFont {
         return isSelected ? selectedName : fontName
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @State
-        private var selection = ""
-
-        var body: some View {
-            RichTextFont.Picker(
-                selection: $selection
-            )
-            .withPreviewPickerStyles()
-            .richTextFontPickerConfig(.init(fonts: Array(RichTextFont.PickerFont.all.dropFirst())))
-        }
-    }
-
-    return Preview()
-}
-
-extension View {
-
-    func withPreviewPickerStyles() -> some View {
-        NavigationView {
-            #if macOS
-            Color.clear
-            #endif
-            ScrollView {
-                VStack(spacing: 10) {
-                    self.label("Default")
-                    self.pickerStyle(.automatic).label(".automatic")
-                    self.pickerStyle(.inline).label(".inline")
-                    #if iOS || macOS
-                    self.pickerStyle(.menu).label(".menu")
-                    #endif
-                    #if iOS
-                    if #available(iOS 16.0, *) {
-                        pickerStyle(.navigationLink).label(".navigationLink")
-                    }
-                    #endif
-                    #if iOS || macOS
-                    if #available(iOS 17.0, macOS 14.0, watchOS 10.0, *) {
-                        pickerStyle(.palette).label(".palette")
-                    }
-                    #endif
-                    #if iOS || macOS || os(tvOS) || os(visionOS)
-                    self.pickerStyle(.segmented).label(".segmented")
-                    #endif
-                    #if iOS
-                    pickerStyle(.wheel).label(".wheel")
-                    #endif
-                }
-            }
-        }
-    }
-}
-
-private extension View {
-
-    func label(_ title: String) -> some View {
-        VStack {
-            Text(title)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-            self
-            Divider()
-        }
-    }
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @State
+//        private var selection = ""
+//
+//        var body: some View {
+//            RichTextFont.Picker(
+//                selection: $selection
+//            )
+//            .withPreviewPickerStyles()
+//            .richTextFontPickerConfig(.init(fonts: Array(RichTextFont.PickerFont.all.dropFirst())))
+//        }
+//    }
+//
+//    return Preview()
+//}
+//
+//extension View {
+//
+//    func withPreviewPickerStyles() -> some View {
+//        NavigationView {
+//            #if macOS
+//            Color.clear
+//            #endif
+//            ScrollView {
+//                VStack(spacing: 10) {
+//                    self.label("Default")
+//                    self.pickerStyle(.automatic).label(".automatic")
+//                    self.pickerStyle(.inline).label(".inline")
+//                    #if iOS || macOS
+//                    self.pickerStyle(.menu).label(".menu")
+//                    #endif
+//                    #if iOS
+//                    if #available(iOS 16.0, *) {
+//                        pickerStyle(.navigationLink).label(".navigationLink")
+//                    }
+//                    #endif
+//                    #if iOS || macOS
+//                    if #available(iOS 17.0, macOS 14.0, watchOS 10.0, *) {
+//                        pickerStyle(.palette).label(".palette")
+//                    }
+//                    #endif
+//                    #if iOS || macOS || os(tvOS) || os(visionOS)
+//                    self.pickerStyle(.segmented).label(".segmented")
+//                    #endif
+//                    #if iOS
+//                    pickerStyle(.wheel).label(".wheel")
+//                    #endif
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//private extension View {
+//
+//    func label(_ title: String) -> some View {
+//        VStack {
+//            Text(title)
+//                .font(.footnote)
+//                .foregroundStyle(.secondary)
+//            self
+//            Divider()
+//        }
+//    }
+//}

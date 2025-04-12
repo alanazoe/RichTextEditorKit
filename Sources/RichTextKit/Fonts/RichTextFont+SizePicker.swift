@@ -82,22 +82,22 @@ private extension RichTextFont.SizePicker {
             .fixedSize(horizontal: true, vertical: false)
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @State
-        private var selection: CGFloat = 2.0
-
-        var body: some View {
-            RichTextFont.SizePicker(
-                selection: $selection
-            )
-            .withPreviewPickerStyles()
-            .richTextFontSizePickerConfig(.init(values: [1, 2, 3]))
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @State
+//        private var selection: CGFloat = 2.0
+//
+//        var body: some View {
+//            RichTextFont.SizePicker(
+//                selection: $selection
+//            )
+//            .withPreviewPickerStyles()
+//            .richTextFontSizePickerConfig(.init(values: [1, 2, 3]))
+//        }
+//    }
+//
+//    return Preview()
+//}

@@ -57,59 +57,59 @@ private extension RichTextAction.Button {
         context.handle(action)
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        func button(
-            for action: RichTextAction
-        ) -> some View {
-            RichTextAction.Button(
-                action: action,
-                context: context,
-                fillVertically: true
-            )
-        }
-
-        var body: some View {
-            VStack {
-                Group {
-                    HStack {
-                        button(for: .copy)
-                        button(for: .dismissKeyboard)
-                        button(for: .print)
-                        button(for: .redoLatestChange)
-                        button(for: .undoLatestChange)
-                    }
-                    HStack {
-                        ForEach(NSTextAlignment.defaultPickerValues) {
-                            button(for: .setAlignment($0))
-                        }
-                    }
-                    HStack {
-                        button(for: .stepFontSize(points: 1))
-                        button(for: .stepFontSize(points: -1))
-                        button(for: .stepIndent(points: 1))
-                        button(for: .stepIndent(points: -1))
-                        button(for: .stepSuperscript(steps: 1))
-                        button(for: .stepSuperscript(steps: -1))
-                    }
-                    HStack {
-                        ForEach(RichTextStyle.allCases) {
-                            button(for: .toggleStyle($0))
-                        }
-                    }
-                }
-                .fixedSize(horizontal: false, vertical: true)
-                .padding()
-                .buttonStyle(.bordered)
-            }
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        func button(
+//            for action: RichTextAction
+//        ) -> some View {
+//            RichTextAction.Button(
+//                action: action,
+//                context: context,
+//                fillVertically: true
+//            )
+//        }
+//
+//        var body: some View {
+//            VStack {
+//                Group {
+//                    HStack {
+//                        button(for: .copy)
+//                        button(for: .dismissKeyboard)
+//                        button(for: .print)
+//                        button(for: .redoLatestChange)
+//                        button(for: .undoLatestChange)
+//                    }
+//                    HStack {
+//                        ForEach(NSTextAlignment.defaultPickerValues) {
+//                            button(for: .setAlignment($0))
+//                        }
+//                    }
+//                    HStack {
+//                        button(for: .stepFontSize(points: 1))
+//                        button(for: .stepFontSize(points: -1))
+//                        button(for: .stepIndent(points: 1))
+//                        button(for: .stepIndent(points: -1))
+//                        button(for: .stepSuperscript(steps: 1))
+//                        button(for: .stepSuperscript(steps: -1))
+//                    }
+//                    HStack {
+//                        ForEach(RichTextStyle.allCases) {
+//                            button(for: .toggleStyle($0))
+//                        }
+//                    }
+//                }
+//                .fixedSize(horizontal: false, vertical: true)
+//                .padding()
+//                .buttonStyle(.bordered)
+//            }
+//        }
+//    }
+//
+//    return Preview()
+//}

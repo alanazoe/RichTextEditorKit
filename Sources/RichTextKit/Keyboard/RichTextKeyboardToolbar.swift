@@ -245,46 +245,46 @@ private extension RichTextKeyboardToolbar {
         isFormatSheetPresented = true
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @State
-        private var text = {
-            let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: NSColor.white
-            ]
-            return NSAttributedString(string: "", attributes: attributes)
-        }()
-
-        @StateObject
-        private var context = RichTextContext()
-
-        var body: some View {
-            VStack(spacing: 0) {
-                RichTextEditor(text: $text, context: context, textColor: TextColor(color: .white))
-                    .foregroundColor(.white)
-                    .background(Color.clear)
-                    .lineSpacing(7.5)
-                    .cornerRadius(10)
-                    .padding()
-                    .background(Color.gray.ignoresSafeArea())
-                RichTextKeyboardToolbar(
-                    context: context,
-                    leadingButtons: { _ in Color.red },
-                    trailingButtons: { _ in Color.green},
-                    formatSheet: { $0 }
-                )
-            }
-            .richTextKeyboardToolbarConfig(.init(
-                alwaysDisplayToolbar: false,
-                leadingActions: [.print],
-                trailingActions: [.print]
-            ))
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @State
+//        private var text = {
+//            let attributes: [NSAttributedString.Key: Any] = [
+//                .foregroundColor: NSColor.white
+//            ]
+//            return NSAttributedString(string: "", attributes: attributes)
+//        }()
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        var body: some View {
+//            VStack(spacing: 0) {
+//                RichTextEditor(text: $text, context: context)
+//                    .foregroundColor(.white)
+//                    .background(Color.clear)
+//                    .lineSpacing(7.5)
+//                    .cornerRadius(10)
+//                    .padding()
+//                    .background(Color.gray.ignoresSafeArea())
+//                RichTextKeyboardToolbar(
+//                    context: context,
+//                    leadingButtons: { _ in Color.red },
+//                    trailingButtons: { _ in Color.green},
+//                    formatSheet: { $0 }
+//                )
+//            }
+//            .richTextKeyboardToolbarConfig(.init(
+//                alwaysDisplayToolbar: false,
+//                leadingActions: [.print],
+//                trailingActions: [.print]
+//            ))
+//        }
+//    }
+//
+//    return Preview()
+//}
 #endif

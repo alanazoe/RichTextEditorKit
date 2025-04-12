@@ -62,14 +62,15 @@ public extension RichTextDataFormat {
         }
     }
 }
-
-#Preview {
-
-    RichTextDataFormat.Menu(
-        title: "Export...",
-        icon: .richTextExport,
-        formatAction: { _ in },
-        pdfAction: {}
-    )
-}
+//
+//#Preview {
+//
+//    RichTextDataFormat.Menu(
+//        title: "Export...",
+//        icon: .richTextExport,
+//        formatAction: { _ in },
+//        pdfAction: {}
+//    )
+//}
+//
 #endif

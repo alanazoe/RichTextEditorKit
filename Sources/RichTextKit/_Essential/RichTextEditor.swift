@@ -54,8 +54,8 @@ import SwiftUI
  */
 
 public class TextColor: ObservableObject {
-    @Published var color: Color
-    public init(color: Color = .white) {
+    @Published var color: NSColor
+    public init(color: NSColor = NSColor.white) {
         self.color = color
     }
 }
@@ -73,12 +73,10 @@ public struct RichTextEditor: ViewRepresentable {
         text: Binding<NSAttributedString>,
         context: RichTextContext,
         format: RichTextDataFormat = .archivedData,
-        textColor: TextColor = TextColor(),
         viewConfiguration: @escaping ViewConfiguration = { _ in }
     ) {
         self.text = text
         self._context = ObservedObject(wrappedValue: context)
-        self.textColor = textColor
         self.format = format
         self.viewConfiguration = viewConfiguration
     }
@@ -87,7 +85,7 @@ public struct RichTextEditor: ViewRepresentable {
 
     @ObservedObject
     private var context: RichTextContext
-    @ObservedObject var textColor: TextColor
+    @EnvironmentObject var textColor: TextColor
     private var text: Binding<NSAttributedString>
     private var format: RichTextDataFormat
     private var viewConfiguration: ViewConfiguration
@@ -106,12 +104,9 @@ public struct RichTextEditor: ViewRepresentable {
     public let scrollView = RichTextView.scrollableTextView()
 
     public var textView: RichTextView {
-        /*scrollView.hasVerticalScroller = config.isScrollBarsVisible
-        var view = scrollView.documentView as? RichTextView ?? RichTextView()
-        view.textColor = .init(textColor.color)
-        return view*/
         let docView = scrollView.documentView as? RichTextView ?? RichTextView()
-           docView.textColor = NSColor(textColor.color)
+           docView.textColor = textColor.color
+        docView.backgroundColor = .clear
         return docView
     }
     #endif
@@ -120,8 +115,11 @@ public struct RichTextEditor: ViewRepresentable {
         RichTextCoordinator(
             text: text,
             textView: textView,
-            richTextContext: context
+            richTextContext: context,
+            textColor: textColor
         )
+
+       
     }
 
     #if iOS || os(tvOS) || os(visionOS)
@@ -140,13 +138,15 @@ public struct RichTextEditor: ViewRepresentable {
     public func makeNSView(context: Context) -> some NSView {
         textView.setup(with: text.wrappedValue, format: format)
         textView.configuration = config
-        textView.theme = RichTextView.Theme(fontColor: NSColor(textColor.color))
-        textView.textColor = NSColor(textColor.color)
+        textView.theme = RichTextView.Theme(fontColor: textColor.color)
+        textView.textColor = textColor.color
         viewConfiguration(textView)
         return scrollView
     }
 
-    public func updateNSView(_ view: NSViewType, context: Context) {}
+    public func updateNSView(_ view: NSViewType, context: Context) {
+        textView.textColor = textColor.color
+    }
     #endif
 }
 
@@ -179,4 +179,45 @@ public extension RichTextEditor {
         textView.mutableAttributedString
     }
 }
+
+public extension View {
+    func textColor(_ color: NSColor) -> some View {
+        self.environmentObject(TextColor(color: color))
+    }
+}
 #endif
+
+#Preview {
+    struct PreviewContainer: View {
+        @StateObject var context = RichTextContext()
+        @State var text = {
+            let font = NSFont(name: "Georgia", size: 16.5) ?? NSFont.systemFont(ofSize: 16.5)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 7.5  // or whatever value you want
+
+            let attributes: [NSAttributedString.Key: Any] = [.font: font, .paragraphStyle: paragraphStyle, .foregroundColor: NSColor.blue]
+            var string = NSAttributedString(string: "hello", attributes: attributes)
+            return string
+
+        }()
+        @State private var isDark = true
+
+        var body: some View {
+            VStack {
+                RichTextEditor(
+                    text: $text,
+                    context: context
+                )
+                .background(.clear)
+                .frame(height: 200)
+                .textColor(isDark ? .white : .black)
+                .id(isDark)
+                Button(action: {isDark.toggle()}){
+                    Text("Change Color")
+                }
+            }
+        }
+    }
+
+    return PreviewContainer()
+}

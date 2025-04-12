@@ -67,30 +67,32 @@ private extension RichTextAction.ButtonGroup {
     }
 }
 
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        func group(greedy: Bool) -> some View {
-            RichTextAction.ButtonGroup(
-                context: context,
-                actions: [.undoLatestChange, .redoLatestChange, .copy],
-                greedy: greedy
-            )
-        }
-
-        var body: some View {
-            VStack {
-                group(greedy: true)
-                group(greedy: false)
-            }
-            .padding()
-        }
-    }
-
-    return Preview()
-}
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        func group(greedy: Bool) -> some View {
+//            RichTextAction.ButtonGroup(
+//                context: context,
+//                actions: [.undoLatestChange, .redoLatestChange, .copy],
+//                greedy: greedy
+//            )
+//        }
+//
+//        var body: some View {
+//            VStack {
+//                group(greedy: true)
+//                group(greedy: false)
+//            }
+//            .padding()
+//        }
+//    }
+//
+//    return Preview()
+//}
+//
 #endif
+

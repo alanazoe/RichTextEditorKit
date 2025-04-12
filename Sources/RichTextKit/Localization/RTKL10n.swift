@@ -155,34 +155,34 @@ public extension RTKL10n {
 }
 
 #if iOS || os(tvOS) || os(visionOS)
-#Preview {
-
-    let locales: [Locale] = [
-        .init(identifier: "en"),
-        .init(identifier: "da"),
-        .init(identifier: "de"),
-        .init(identifier: "nb"),
-        .init(identifier: "sv")
-    ]
-
-    return NavigationView {
-        List {
-            ForEach(RTKL10n.allCases) { item in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("\(item.key)")
-                    VStack(alignment: .leading) {
-                        Text("default: \(item.text)")
-                        ForEach(Array(locales.enumerated()), id: \.offset) {
-                            Text("\($0.element.identifier): \(item.text(for: $0.element))")
-                        }
-                    }
-                    .font(.footnote)
-                }
-                .padding(.vertical, 4)
-            }
-        }
-        .navigationBarTitle("Translations")
-    }
-    .navigationViewStyle(.stack)
-}
+//#Preview {
+//
+//    let locales: [Locale] = [
+//        .init(identifier: "en"),
+//        .init(identifier: "da"),
+//        .init(identifier: "de"),
+//        .init(identifier: "nb"),
+//        .init(identifier: "sv")
+//    ]
+//
+//    return NavigationView {
+//        List {
+//            ForEach(RTKL10n.allCases) { item in
+//                VStack(alignment: .leading, spacing: 10) {
+//                    Text("\(item.key)")
+//                    VStack(alignment: .leading) {
+//                        Text("default: \(item.text)")
+//                        ForEach(Array(locales.enumerated()), id: \.offset) {
+//                            Text("\($0.element.identifier): \(item.text(for: $0.element))")
+//                        }
+//                    }
+//                    .font(.footnote)
+//                }
+//                .padding(.vertical, 4)
+//            }
+//        }
+//        .navigationBarTitle("Translations")
+//    }
+//    .navigationViewStyle(.stack)
+//}
 #endif

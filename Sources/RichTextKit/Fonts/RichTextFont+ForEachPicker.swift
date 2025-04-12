@@ -74,28 +74,28 @@ public extension RichTextFont {
     }
 }
 
-#Preview {
-
-    struct Preview: View {
-
-        @State
-        private var selection = ""
-
-        var body: some View {
-            NavigationView {
-                #if macOS
-                Color.clear
-                #endif
-                List {
-                    RichTextFont.ForEachPicker(
-                        selection: $selection
-                    )
-                }
-                .navigationTitle("Pick a font")
-            }
-            .richTextFontPickerConfig(.init(moveSelectionTopmost: true))
-        }
-    }
-
-    return Preview()
-}
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @State
+//        private var selection = ""
+//
+//        var body: some View {
+//            NavigationView {
+//                #if macOS
+//                Color.clear
+//                #endif
+//                List {
+//                    RichTextFont.ForEachPicker(
+//                        selection: $selection
+//                    )
+//                }
+//                .navigationTitle("Pick a font")
+//            }
+//            .richTextFontPickerConfig(.init(moveSelectionTopmost: true))
+//        }
+//    }
+//
+//    return Preview()
+//}

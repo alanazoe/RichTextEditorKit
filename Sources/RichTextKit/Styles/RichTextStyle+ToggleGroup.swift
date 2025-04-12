@@ -79,30 +79,30 @@ public extension RichTextStyle {
     }
 }
 
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        func group(greedy: Bool) -> some View {
-            RichTextStyle.ToggleGroup(
-                context: context,
-                greedy: greedy
-            )
-        }
-
-        var body: some View {
-            VStack {
-                group(greedy: true)
-                group(greedy: false)
-                    .tint(.red)
-            }
-            .padding()
-        }
-    }
-
-    return Preview()
-}
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        func group(greedy: Bool) -> some View {
+//            RichTextStyle.ToggleGroup(
+//                context: context,
+//                greedy: greedy
+//            )
+//        }
+//
+//        var body: some View {
+//            VStack {
+//                group(greedy: true)
+//                group(greedy: false)
+//                    .tint(.red)
+//            }
+//            .padding()
+//        }
+//    }
+//
+//    return Preview()
+//}
 #endif

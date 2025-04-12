@@ -46,32 +46,32 @@ public extension Stepper {
     }
 }
 
-#Preview {
-
-    struct Preview: View {
-        
-        let keypath: KeyPath<NSParagraphStyle, CGFloat> = \.lineSpacing
-        let writableKeypath: WritableKeyPath<NSMutableParagraphStyle, CGFloat> = \.lineSpacing
-
-        @StateObject var context = RichTextContext()
-        
-        var value: Double {
-            context.paragraphStyleValue(for: keypath)
-        }
-
-        var body: some View {
-            VStack {
-                Text(String(format: "%.1f", value))
-                Stepper(forValue: writableKeypath, in: context, step: 1) {
-                    Text("Context")
-                }
-                Stepper(forValue: writableKeypath, in: $context.paragraphStyle, step: 1) {
-                    Text("Context")
-                }
-            }
-        }
-    }
-
-    return Preview()
-}
+//#Preview {
+//
+//    struct Preview: View {
+//        
+//        let keypath: KeyPath<NSParagraphStyle, CGFloat> = \.lineSpacing
+//        let writableKeypath: WritableKeyPath<NSMutableParagraphStyle, CGFloat> = \.lineSpacing
+//
+//        @StateObject var context = RichTextContext()
+//        
+//        var value: Double {
+//            context.paragraphStyleValue(for: keypath)
+//        }
+//
+//        var body: some View {
+//            VStack {
+//                Text(String(format: "%.1f", value))
+//                Stepper(forValue: writableKeypath, in: context, step: 1) {
+//                    Text("Context")
+//                }
+//                Stepper(forValue: writableKeypath, in: $context.paragraphStyle, step: 1) {
+//                    Text("Context")
+//                }
+//            }
+//        }
+//    }
+//
+//    return Preview()
+//}
 #endif

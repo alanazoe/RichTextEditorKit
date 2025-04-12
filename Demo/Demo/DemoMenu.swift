@@ -14,6 +14,6 @@ struct DemoMenu: View {
     }
 }
 
-#Preview {
-    DemoMenu()
-}
+//#Preview {
+//    DemoMenu()
+//}

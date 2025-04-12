@@ -163,31 +163,31 @@ public extension EnvironmentValues {
         set { self [RichTextFormat.Sidebar.Style.Key.self] = newValue }
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        var body: some View {
-            RichTextFormat.Sidebar(
-                context: context
-            )
-            .richTextFormatSidebarConfig(.init(
-                alignments: [.left, .right],
-                colorPickers: [.foreground],
-                colorPickersDisclosed: [.background],
-                fontPicker: false,
-                fontSizePicker: true,
-                indentButtons: true,
-                styles: .all,
-                superscriptButtons: true
-            ))
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        var body: some View {
+//            RichTextFormat.Sidebar(
+//                context: context
+//            )
+//            .richTextFormatSidebarConfig(.init(
+//                alignments: [.left, .right],
+//                colorPickers: [.foreground],
+//                colorPickersDisclosed: [.background],
+//                fontPicker: false,
+//                fontSizePicker: true,
+//                indentButtons: true,
+//                styles: .all,
+//                superscriptButtons: true
+//            ))
+//        }
+//    }
+//
+//    return Preview()
+//}
 #endif

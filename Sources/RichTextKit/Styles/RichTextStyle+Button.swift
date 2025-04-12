@@ -106,50 +106,50 @@ private extension RichTextStyle.Button {
         value.wrappedValue.toggle()
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        private let context = RichTextContext()
-        @State
-        private var isBoldOn = false
-
-        @State
-        private var isItalicOn = true
-
-        @State
-        private var isStrikethroughOn = false
-
-        @State
-        private var isUnderlinedOn = false
-
-        var body: some View {
-            HStack {
-                Text(isBoldOn.description)
-
-                RichTextStyle.Button(
-                    style: .bold,
-                    value: $isBoldOn
-                )
-                RichTextStyle.Button(
-                    style: .italic,
-                    value: $isItalicOn
-                )
-                RichTextStyle.Button(
-                    style: .strikethrough,
-                    value: $isStrikethroughOn
-                )
-                RichTextStyle.Button(
-                    style: .underlined,
-                    value: $isUnderlinedOn
-                )
-                .buttonStyle(.bordered)
-            }
-            .padding()
-            .foregroundColor(.red)
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        private let context = RichTextContext()
+//        @State
+//        private var isBoldOn = false
+//
+//        @State
+//        private var isItalicOn = true
+//
+//        @State
+//        private var isStrikethroughOn = false
+//
+//        @State
+//        private var isUnderlinedOn = false
+//
+//        var body: some View {
+//            HStack {
+//                Text(isBoldOn.description)
+//
+//                RichTextStyle.Button(
+//                    style: .bold,
+//                    value: $isBoldOn
+//                )
+//                RichTextStyle.Button(
+//                    style: .italic,
+//                    value: $isItalicOn
+//                )
+//                RichTextStyle.Button(
+//                    style: .strikethrough,
+//                    value: $isStrikethroughOn
+//                )
+//                RichTextStyle.Button(
+//                    style: .underlined,
+//                    value: $isUnderlinedOn
+//                )
+//                .buttonStyle(.bordered)
+//            }
+//            .padding()
+//            .foregroundColor(.red)
+//        }
+//    }
+//
+//    return Preview()
+//}

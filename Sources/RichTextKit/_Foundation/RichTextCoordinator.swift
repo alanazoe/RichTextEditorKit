@@ -19,7 +19,7 @@ import SwiftUI
 /// when things change in the text view, and vice versa.
 @preconcurrency @MainActor
 open class RichTextCoordinator: NSObject {
-
+ 
     // MARK: - Initialization
 
     /// Create a rich text coordinator.
@@ -33,19 +33,20 @@ open class RichTextCoordinator: NSObject {
         text: Binding<NSAttributedString>,
         textView: RichTextView,
         richTextContext: RichTextContext,
-        defaultFontColor: ColorRepresentable? = NSColor.white
+        textColor: TextColor = TextColor()
     ) {
         textView.attributedString = text.wrappedValue
         self.text = text
         self.textView = textView
         self.context = richTextContext
-        self.defaultFontColor = defaultFontColor
+        self.textColor = textColor
         super.init()
         self.textView.delegate = self
         subscribeToUserActions()
     }
 
     // MARK: - Properties
+    //@EnvironmentObject var textColor: TextColor
 
     /// The rich text context to coordinate with.
     public let context: RichTextContext
@@ -63,7 +64,7 @@ open class RichTextCoordinator: NSObject {
     var shouldDelaySyncContextWithTextView = true
 
     /// The default font color to use if none is set in the text view.
-    public let defaultFontColor: ColorRepresentable?
+    @ObservedObject var textColor: TextColor
 
     // MARK: - Internal Properties
 
@@ -151,7 +152,6 @@ public extension RichTextCoordinator {
 // MARK: - Internal Extensions
 
 extension RichTextCoordinator {
-
     /// Sync state from the text view's current state.
     func syncWithTextView() {
         syncContextWithTextView()
@@ -184,7 +184,11 @@ extension RichTextCoordinator {
         sync(&context.canUndoLatestChange, with: textView.undoManager?.canUndo ?? false)
         sync(&context.fontName, with: font.fontName)
         sync(&context.fontSize, with: font.pointSize)
-        sync(&context.fontColor, with: defaultFontColor ?? NSColor.white)
+        sync(&context.fontColor, with: textColor.color)
+
+        if textView.string.isEmpty {
+            textView.textColor = textColor.color
+        }
 
         sync(&context.isEditingText, with: textView.isFirstResponder)
         sync(&context.paragraphStyle, with: textView.richTextParagraphStyle ?? {
@@ -195,7 +199,7 @@ extension RichTextCoordinator {
 
         RichTextColor.allCases.forEach {
             if let color = textView.richTextColor($0) {
-                context.setColor($0, to: .white)
+                context.setColor($0, to: color)
             }
         }
 

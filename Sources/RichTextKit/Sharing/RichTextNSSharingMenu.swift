@@ -112,13 +112,13 @@ private extension RichTextNSSharingMenu {
     }
 }
 
-#Preview {
-
-    VStack {
-        RichTextNSSharingMenu(
-            formatAction: { _ in nil },
-            pdfAction: { nil }
-        )
-    }
-}
+//#Preview {
+//
+//    VStack {
+//        RichTextNSSharingMenu(
+//            formatAction: { _ in nil },
+//            pdfAction: { nil }
+//        )
+//    }
+//}
 #endif

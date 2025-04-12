@@ -106,24 +106,25 @@ private extension RichTextFont.SizePickerStack {
         context.fontSize += CGFloat(step)
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        var body: some View {
-            VStack {
-                Text("Size: \(context.fontSize)")
-                RichTextFont.SizePickerStack(context: context)
-            }
-            .buttonStyle(.bordered)
-            .padding()
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        var body: some View {
+//            VStack {
+//                Text("Size: \(context.fontSize)")
+//                RichTextFont.SizePickerStack(context: context)
+//            }
+//            .buttonStyle(.bordered)
+//            .padding()
+//        }
+//    }
+//
+//    return Preview()
+//}
+//
 #endif

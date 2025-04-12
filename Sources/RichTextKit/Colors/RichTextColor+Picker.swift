@@ -152,43 +152,43 @@ private struct ColorButtonStyle: ButtonStyle {
             .shadow(radius: 1, x: 0, y: 1)
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-        @State
-        private var foregroundColor = Color.black
-
-        @State
-        private var backgroundColor = Color.white
-
-        var body: some View {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Preview")
-                    .foregroundStyle(foregroundColor)
-                    .padding()
-                    .background(backgroundColor)
-                    .frame(maxWidth: .infinity)
-                    .border(Color.black)
-                    .background(Color.red)
-                    .padding()
-
-                RichTextColor.Picker(
-                    type: .foreground,
-                    value: $foregroundColor,
-                    quickColors: [.white, .black, .red, .green, .blue]
-                )
-                .padding(.leading)
-
-                RichTextColor.Picker(
-                    type: .background,
-                    value: $backgroundColor,
-                    quickColors: [.white, .black, .red, .green, .blue]
-                )
-                .padding(.leading)
-            }
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//        @State
+//        private var foregroundColor = Color.black
+//
+//        @State
+//        private var backgroundColor = Color.white
+//
+//        var body: some View {
+//            VStack(alignment: .leading, spacing: 10) {
+//                Text("Preview")
+//                    .foregroundStyle(foregroundColor)
+//                    .padding()
+//                    .background(backgroundColor)
+//                    .frame(maxWidth: .infinity)
+//                    .border(Color.black)
+//                    .background(Color.red)
+//                    .padding()
+//
+//                RichTextColor.Picker(
+//                    type: .foreground,
+//                    value: $foregroundColor,
+//                    quickColors: [.white, .black, .red, .green, .blue]
+//                )
+//                .padding(.leading)
+//
+//                RichTextColor.Picker(
+//                    type: .background,
+//                    value: $backgroundColor,
+//                    quickColors: [.white, .black, .red, .green, .blue]
+//                )
+//                .padding(.leading)
+//            }
+//        }
+//    }
+//
+//    return Preview()
+//}

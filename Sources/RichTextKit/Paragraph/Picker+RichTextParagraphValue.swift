@@ -65,42 +65,42 @@ private extension Picker {
         )
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-        
-        typealias ValueType = NSTextAlignment
-        let keypath: KeyPath<NSParagraphStyle, NSTextAlignment> = \.alignment
-        let writableKeypath: WritableKeyPath<NSMutableParagraphStyle, NSTextAlignment> = \.alignment
-
-        @State var alignment = ValueType.left
-        @StateObject var context = RichTextContext()
-        
-        var value: ValueType {
-            context.paragraphStyleValue(for: keypath)
-        }
-
-        var body: some View {
-            VStack {
-                Text("\(value)")
-                Picker(forValue: writableKeypath, in: context) {
-                    Text("Context")
-                } valueLabel: { value in
-                    value.defaultLabel
-                }
-                Picker(forValue: writableKeypath, in: $context.paragraphStyle) {
-                    Text("Paragraph")
-                } valueLabel: { value in
-                    value.defaultLabel
-                }
-                .labelStyle(.iconOnly)
-                #if !os(watchOS)
-                .pickerStyle(.segmented)
-                #endif
-            }
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//        
+//        typealias ValueType = NSTextAlignment
+//        let keypath: KeyPath<NSParagraphStyle, NSTextAlignment> = \.alignment
+//        let writableKeypath: WritableKeyPath<NSMutableParagraphStyle, NSTextAlignment> = \.alignment
+//
+//        @State var alignment = ValueType.left
+//        @StateObject var context = RichTextContext()
+//        
+//        var value: ValueType {
+//            context.paragraphStyleValue(for: keypath)
+//        }
+//
+//        var body: some View {
+//            VStack {
+//                Text("\(value)")
+//                Picker(forValue: writableKeypath, in: context) {
+//                    Text("Context")
+//                } valueLabel: { value in
+//                    value.defaultLabel
+//                }
+//                Picker(forValue: writableKeypath, in: $context.paragraphStyle) {
+//                    Text("Paragraph")
+//                } valueLabel: { value in
+//                    value.defaultLabel
+//                }
+//                .labelStyle(.iconOnly)
+//                #if !os(watchOS)
+//                .pickerStyle(.segmented)
+//                #endif
+//            }
+//        }
+//    }
+//
+//    return Preview()
+//}

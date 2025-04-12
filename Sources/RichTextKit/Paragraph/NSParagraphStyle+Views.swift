@@ -50,18 +50,18 @@ private func previewIcon<ValueType>(
         EmptyView()
     }
 }
-
-#Preview {
-    
-    List {
-        previewIcon(for: \.alignment, ".alignment")
-        previewIcon(for: \.baseWritingDirection, ".baseWritingDirection")
-        previewIcon(for: \.firstLineHeadIndent, ".firstLineHeadIndent")
-        previewIcon(for: \.headIndent, ".headIndent")
-        previewIcon(for: \.lineBreakMode, ".lineBreakMode")
-        previewIcon(for: \.lineHeightMultiple, ".lineHeightMultiple")
-        previewIcon(for: \.lineSpacing, ".lineSpacing")
-        previewIcon(for: \.maximumLineHeight, ".maximumLineHeight")
-        previewIcon(for: \.minimumLineHeight, ".minimumLineHeight")
-    }
-}
+//
+//#Preview {
+//    
+//    List {
+//        previewIcon(for: \.alignment, ".alignment")
+//        previewIcon(for: \.baseWritingDirection, ".baseWritingDirection")
+//        previewIcon(for: \.firstLineHeadIndent, ".firstLineHeadIndent")
+//        previewIcon(for: \.headIndent, ".headIndent")
+//        previewIcon(for: \.lineBreakMode, ".lineBreakMode")
+//        previewIcon(for: \.lineHeightMultiple, ".lineHeightMultiple")
+//        previewIcon(for: \.lineSpacing, ".lineSpacing")
+//        previewIcon(for: \.maximumLineHeight, ".maximumLineHeight")
+//        previewIcon(for: \.minimumLineHeight, ".minimumLineHeight")
+//    }
+//}

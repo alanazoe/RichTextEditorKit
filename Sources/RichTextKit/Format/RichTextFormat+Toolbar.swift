@@ -133,42 +133,42 @@ private extension RichTextFormat.Toolbar {
         }
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        var toolbar: some View {
-            RichTextFormat.Toolbar(
-                context: context
-            )
-            .richTextFormatToolbarConfig(.init(
-                alignments: [.left, .right],
-                colorPickers: [.foreground],
-                colorPickersDisclosed: [.background],
-                fontPicker: false,
-                fontSizePicker: true,
-                indentButtons: true,
-                styles: .all,
-                superscriptButtons: true
-            ))
-        }
-
-        var body: some View {
-            VStack(spacing: 0) {
-                Color.red
-                toolbar
-            }
-            .richTextFormatToolbarStyle(.init(
-                padding: 10,
-                spacing: 10
-            ))
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        var toolbar: some View {
+//            RichTextFormat.Toolbar(
+//                context: context
+//            )
+//            .richTextFormatToolbarConfig(.init(
+//                alignments: [.left, .right],
+//                colorPickers: [.foreground],
+//                colorPickersDisclosed: [.background],
+//                fontPicker: false,
+//                fontSizePicker: true,
+//                indentButtons: true,
+//                styles: .all,
+//                superscriptButtons: true
+//            ))
+//        }
+//
+//        var body: some View {
+//            VStack(spacing: 0) {
+//                Color.red
+//                toolbar
+//            }
+//            .richTextFormatToolbarStyle(.init(
+//                padding: 10,
+//                spacing: 10
+//            ))
+//        }
+//    }
+//
+//    return Preview()
+//}
 #endif

@@ -43,14 +43,14 @@ public struct RichTextShareMenu: View {
         menu
     }
 }
-
-#Preview {
-
-    VStack {
-        RichTextShareMenu(
-            formatAction: { _ in },
-            pdfAction: {}
-        )
-    }
-}
+//
+//#Preview {
+//
+//    VStack {
+//        RichTextShareMenu(
+//            formatAction: { _ in },
+//            pdfAction: {}
+//        )
+//    }
+//}
 #endif

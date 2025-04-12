@@ -53,23 +53,23 @@ public extension RichTextAction {
         }
     }
 }
-
-#Preview {
-
-    struct Preview: View {
-
-        @StateObject
-        private var context = RichTextContext()
-
-        var body: some View {
-            RichTextAction.ButtonStack(
-                context: context,
-                actions: [.undoLatestChange, .redoLatestChange, .copy]
-            )
-            .buttonStyle(.bordered)
-            .padding()
-        }
-    }
-
-    return Preview()
-}
+//
+//#Preview {
+//
+//    struct Preview: View {
+//
+//        @StateObject
+//        private var context = RichTextContext()
+//
+//        var body: some View {
+//            RichTextAction.ButtonStack(
+//                context: context,
+//                actions: [.undoLatestChange, .redoLatestChange, .copy]
+//            )
+//            .buttonStyle(.bordered)
+//            .padding()
+//        }
+//    }
+//
+//    return Preview()
+//}
