@@ -182,7 +182,7 @@ open class RichTextImageAttachment: NSTextAttachment {
                 let image = ImageRepresentable(data: data)
             else { return nil }
             return MainActor.assumeIsolated {
-                NSTextAttachmentCell(imageCell: image)
+                NSTextAttachmentCell(imageCell: image) as NSTextAttachmentCellProtocol
             }
         }
         set {
